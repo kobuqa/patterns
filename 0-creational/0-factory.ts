@@ -1,5 +1,5 @@
 /**
- * Solves: Lowering high coupling.
+ * Solves: Creation of items without specifying concrete item.  Lowering high coupling.
  * How: Creating instances by type
  * Condition: Instances has to match the same interface
  */
