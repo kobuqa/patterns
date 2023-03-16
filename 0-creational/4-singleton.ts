@@ -1,6 +1,6 @@
 /**
  * Problem: Instantiation of single instance
- * Note: It's antipatterns since breaking SRP
+ * Note: It's antipattern since breaking SRP
  */
 
 interface DB {}
