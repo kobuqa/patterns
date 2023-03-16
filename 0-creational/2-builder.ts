@@ -129,6 +129,3 @@ const newUser = director.create();
 director.setBuilder(adminBuilder);
 
 const newAdmin = director.create();
-
-console.log(newUser);
-console.log(newAdmin);
