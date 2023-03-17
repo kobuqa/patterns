@@ -1,5 +1,7 @@
 /**
  *  Problem: to traverse collections/trees/graphs
+ *  NOTE: You can just use [Symbol.Iterator]() {} JS core feature instead of that - https://learn.javascript.ru/iterator
+ *  But for more complext things - u've to implement your own(depth traverse, width traverse of tree)
  */
 
 
