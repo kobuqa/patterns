@@ -4,50 +4,60 @@
 
 
 interface Command {
-    execute(params: unknown): void;
+    execute(): void;
     undo(): void;
 }
 
 interface Invoker {
-    command: null | Command;
-    setCommand(command: Command): void;
-    executeCommand(params: unknown): void;
-    undoCommand(): void;
+    execute(command: Command): void;
+    undo(): void;
 
 }
+const commandHistory: Command[] = [];
+
 const invoker: Invoker = {
-    command: null,
-    setCommand(command: Command) {
-        this.command = command
+    execute(command: Command) {
+       command.execute()
+       commandHistory.push(command)
     },
-    executeCommand(params: unknown) {
-        if(this.command) this.command.execute(params)
-    },
-    undoCommand() {
-        if(this.command) this.command.undo()
+    undo() {
+        const command = commandHistory.pop();
+        if (command) command.undo()
     },
 };
 
-const receiver = {
-    isRunning: false,
-    on() {
-        this.isRunning = true;
-    },
-    off() {
-        this.isRunning = false;
-    }
+const receiver = { // Business logic
+    total: 5,
+    add(amount: number) {
+        this.total += amount;
+   },
+   subtract(amount: number) {
+    this.total -= amount;
+   }
 };
 
-const turnOnCommand: Command = {
+const addTen: Command = { // Command #1
    execute() {
-    receiver.on()
+    receiver.add(10)
    },
    undo() {
-       receiver.off()
+    receiver.subtract(10)
    },
-
 }
 
-invoker.setCommand(turnOnCommand); // set command to execute
-invoker.executeCommand(null); // turn on
-invoker.undoCommand(); // turn off
+const minusThree: Command = { // Command #2
+    execute() {
+     receiver.subtract(3)
+    },
+    undo() {
+     receiver.add(3)
+    },
+ }
+
+invoker.execute(addTen); // 15
+invoker.execute(minusThree); // 12
+invoker.execute(minusThree); // 9
+invoker.execute(addTen); // 19
+invoker.execute(minusThree); // 16
+invoker.undo(); // 19
+invoker.undo(); // 9
