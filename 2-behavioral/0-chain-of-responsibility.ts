@@ -1,5 +1,7 @@
 /**
  * Problem: to make a sequence of transformations/calls and interrupt that chain on fail(there is no sense to continue if some step failed)
+ * Note: Example below is working like guard before each step.
+ * But it can be also made in reverse way - as pipe of handlers that can handle an object in correct way, and if noone exists - last one will throw Exception :)
  */
 
 interface Handler {
