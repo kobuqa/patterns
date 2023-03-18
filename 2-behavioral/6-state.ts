@@ -2,6 +2,7 @@
  * Problem: Managing huge amount of states. Avoid 'Boolean Explosion'
  * Note: Cant be implemented separately from state machine. Ready solution xState. Even reducer - state machine :)
  * BL: Payment flow, access via subscriptions, etc
+ * Video: https://youtu.be/mxz7_zcip0c
  */
 
 // ! Example is too simple to provide the profits of state machine. You will discover it on more complex nested states.
