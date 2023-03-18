@@ -26,6 +26,7 @@ const arrayIterator: ArrayIterator = {
     },
     iterate(collection: any[]) {
         this.collection = collection;
+
         while(this.hasNext()) {
             console.log(this.next())
         }
